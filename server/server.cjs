@@ -1,9 +1,7 @@
 const express = require('express');                                                                                                                                                                       
 const cors = require("cors");                                                                                                                                                                                                    
 const app = express();  
-const prisma = require("./prisma.cjs");                                                                                                                                                                                
-
-const port = 3000;                                                                                                                                                                                        
+const prisma = require("./prisma.cjs");                                                                                                                                                                                                                                                                                                                                                            
                                                                                                                                                                                                           
                                                                                                                                                                                                           
 const auth = require("./auth.cjs")
@@ -37,7 +35,8 @@ app.get('/', (req, res) => {
         console.error(err);
     }
 })();                                                                                                                                                                         
-app.listen(port, () => {                                                                                                                                                                                    
-    console.log(`Server is running on http://localhost:${port}`);                                                                                                                                         
-                                                                                                                                                                                                          
-});  
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server started on ${PORT}`);
+});
