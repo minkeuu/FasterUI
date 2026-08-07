@@ -16,7 +16,11 @@ import {
 import { useNavigate } from 'react-router-dom';
 const DEFAULT_AVATAR =
   "/default_avatar.jpg";
+const isProduction = window.location.hostname !== 'localhost';
 
+export const API_URL = isProduction 
+  ? 'https://faster-ui-alpha.vercel.app'  
+  : ''; 
 export default function Profile() {
   const [user, setUser] = useState({
     id: "1",
@@ -47,12 +51,6 @@ export default function Profile() {
   const [error, setError] = useState("");
   const token = localStorage.getItem("token");
   const fileInputRef = useRef(null);
-
-  const isProduction = window.location.hostname !== 'localhost';
-
-  export const API_URL = isProduction 
-    ? 'https://faster-ui-alpha.vercel.app'  
-    : ''; 
 
 
   // Имитация загрузки данных пользователя

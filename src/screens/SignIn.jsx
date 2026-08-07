@@ -3,19 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthLayout from "./AuthLayout";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
+const isProduction = window.location.hostname !== 'localhost';
 
+  export const API_URL = isProduction 
+    ? 'https://faster-ui-alpha.vercel.app'  
+    : ''; 
 export default function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const isProduction = window.location.hostname !== 'localhost';
-
-  export const API_URL = isProduction 
-    ? 'https://faster-ui-alpha.vercel.app'  
-    : ''; 
 
   async function handleSubmit(e) {
     e.preventDefault();
