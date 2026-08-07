@@ -41,4 +41,4 @@ if (process.env.PORT !== 'production') {
     app.listen(PORT, () => console.log(`Сервер запущен на порту ${PORT}`));
 }
 
-module.exports = app; // Передаем управление серверу Vercel
+module.exports = app; 
