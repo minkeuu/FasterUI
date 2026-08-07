@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
     }
 })();                                                                                                                                                                         
 
-if (process.env.PORT !== 'production') {
+if (process.env.PORT !== 'production' ) {
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => console.log(`Сервер запущен на порту ${PORT}`));
 }
