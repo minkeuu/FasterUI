@@ -7,7 +7,7 @@ const isProduction = window.location.hostname !== 'localhost';
 
 export const API_URL = isProduction 
   ? 'https://faster-ui-alpha.vercel.app'  
-  : ''; 
+  : ''
 export default function SignUp() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
