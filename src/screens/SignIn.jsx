@@ -11,6 +11,12 @@ export default function SignIn() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const isProduction = window.location.hostname !== 'localhost';
+
+  export const API_URL = isProduction 
+    ? 'https://faster-ui-alpha.vercel.app'  
+    : ''; 
+
   async function handleSubmit(e) {
     e.preventDefault();
     setError("");
@@ -26,7 +32,7 @@ export default function SignIn() {
     await new Promise((r) => setTimeout(r, 500));
 
     setLoading(false);
-    const response = await fetch("/api/auth/login", {
+    const response = await fetch(`${API_URL}/api/auth/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
