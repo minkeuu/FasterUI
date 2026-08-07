@@ -16,11 +16,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 const DEFAULT_AVATAR =
   "/default_avatar.jpg";
-const isProduction = window.location.hostname !== 'localhost';
 
-export const API_URL = isProduction 
-  ? 'https://faster-ui-alpha.vercel.app'  
-  : ''; 
 export default function Profile() {
   const [user, setUser] = useState({
     id: "1",
@@ -51,8 +47,6 @@ export default function Profile() {
   const [error, setError] = useState("");
   const token = localStorage.getItem("token");
   const fileInputRef = useRef(null);
-
-
   // Имитация загрузки данных пользователя
   useEffect(() => {
     getProfile();
@@ -60,7 +54,7 @@ export default function Profile() {
   async function getProfile() {
     setLoading(true);
 
-    const response = await fetch(`${API_URL}/api/profile`, {
+    const response = await fetch("/api/profile", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`
@@ -123,7 +117,7 @@ export default function Profile() {
 
         formData.append("avatar", avatarFile);
 
-        const response = await fetch(`${API_URL}/api/profile/avatar`, {
+        const response = await fetch("/api/profile/avatar", {
           method: "PUT",
           headers: {
             Authorization: `Bearer ${token}`
@@ -157,7 +151,7 @@ export default function Profile() {
   };
   const handleNameChange = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/profile/name`, {
+      const response = await fetch("/api/profile/name", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -202,7 +196,7 @@ export default function Profile() {
 
     setSavingPw(true);
     try {
-      const response = await fetch(`${API_URL}/api/profile/password`, {
+      const response = await fetch("/api/profile/password", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
