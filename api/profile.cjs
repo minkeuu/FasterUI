@@ -5,7 +5,7 @@ const prisma = require("./prisma.cjs");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const multer = require("multer"); 
-const supabase = require("@supabase/supabase-js")
+const supabase = require("./supabase.cjs")
 const upload = multer({
     storage: multer.memoryStorage(),
     limits: {
