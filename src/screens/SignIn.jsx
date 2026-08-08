@@ -3,11 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthLayout from "./AuthLayout";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
-const isProduction = window.location.hostname !== 'localhost';
 
-export const API_URL = isProduction 
-  ? 'faster-ui-backend-xi.vercel.app' // ⬅️ Вставьте сюда вашу ссылку из Шага 2
-  : ''; 
 export default function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -30,7 +26,7 @@ export default function SignIn() {
     await new Promise((r) => setTimeout(r, 500));
 
     setLoading(false);
-    const response = await fetch(`${API_URL}/api/auth/login`, {
+    const response = await fetch(`https://faster-ui-backend-xi.vercel.app/api/auth/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

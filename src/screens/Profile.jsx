@@ -16,11 +16,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 const DEFAULT_AVATAR =
   "/default_avatar.jpg";
-const isProduction = window.location.hostname !== 'localhost';
 
-export const API_URL = isProduction 
-  ? 'faster-ui-backend-xi.vercel.app' // ⬅️ Вставьте сюда вашу ссылку из Шага 2
-  : ''; 
 export default function Profile() {
   const [user, setUser] = useState({
     id: "1",
@@ -58,7 +54,7 @@ export default function Profile() {
   async function getProfile() {
     setLoading(true);
 
-    const response = await fetch(`${API_URL}/api/profile`, {
+    const response = await fetch(`https://faster-ui-backend-xi.vercel.app/api/profile`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`
@@ -121,7 +117,7 @@ export default function Profile() {
 
         formData.append("avatar", avatarFile);
 
-        const response = await fetch(`${API_URL}/api/profile/avatar`, {
+        const response = await fetch(`https://faster-ui-backend-xi.vercel.app/api/profile/avatar`, {
           method: "PUT",
           headers: {
             Authorization: `Bearer ${token}`
@@ -155,7 +151,7 @@ export default function Profile() {
   };
   const handleNameChange = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/profile/name`, {
+      const response = await fetch(`https://faster-ui-backend-xi.vercel.app/api/profile/name`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -200,7 +196,7 @@ export default function Profile() {
 
     setSavingPw(true);
     try {
-      const response = await fetch(`${API_URL}/api/profile/password`, {
+      const response = await fetch(`https://faster-ui-backend-xi.vercel.app/api/profile/password`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
