@@ -8,7 +8,7 @@
     "build": "vite build --outDir dist",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "nodemon server/server.cjs",
+    "server": "nodemon api/server.cjs",
     "start": "concurrently \"npm run dev\" \"npm run server\""
   },
   "dependencies": {
