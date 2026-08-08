@@ -26,7 +26,7 @@ export default function SignIn() {
     await new Promise((r) => setTimeout(r, 500));
 
     setLoading(false);
-    const response = await fetch(`https://faster-ui-backend-xi.vercel.app/api/auth/login`, {
+    const response = await fetch(`/api/auth/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

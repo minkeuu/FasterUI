@@ -54,7 +54,7 @@ export default function Profile() {
   async function getProfile() {
     setLoading(true);
 
-    const response = await fetch(`https://faster-ui-backend-xi.vercel.app/api/profile`, {
+    const response = await fetch(`/api/profile`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`
@@ -117,7 +117,7 @@ export default function Profile() {
 
         formData.append("avatar", avatarFile);
 
-        const response = await fetch(`https://faster-ui-backend-xi.vercel.app/api/profile/avatar`, {
+        const response = await fetch(`/api/profile/avatar`, {
           method: "PUT",
           headers: {
             Authorization: `Bearer ${token}`
@@ -151,7 +151,7 @@ export default function Profile() {
   };
   const handleNameChange = async () => {
     try {
-      const response = await fetch(`https://faster-ui-backend-xi.vercel.app/api/profile/name`, {
+      const response = await fetch(`/api/profile/name`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -196,7 +196,7 @@ export default function Profile() {
 
     setSavingPw(true);
     try {
-      const response = await fetch(`https://faster-ui-backend-xi.vercel.app/api/profile/password`, {
+      const response = await fetch(`/api/profile/password`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

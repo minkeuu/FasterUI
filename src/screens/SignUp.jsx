@@ -33,7 +33,7 @@ export default function SignUp() {
 
     // TODO: replace with your own backend call
       try {
-      const response = await fetch(`https://faster-ui-backend-xi.vercel.app/api/auth/register`, {
+      const response = await fetch(`/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
