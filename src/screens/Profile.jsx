@@ -69,16 +69,13 @@ export default function Profile() {
     }
     setUser(data);
 
-   const avatar = data.avatar
-      ? data.avatar.startsWith("/uploads/")
-        ? data.avatar
-        : `/uploads/${data.avatar}`
-      : DEFAULT_AVATAR;
+    const avatar = data.avatar || DEFAULT_AVATAR;
 
     setAvatarUrl(avatar);
     setOriginalAvatarUrl(avatar);
-    console.log(data)
-    setName(data.name)
+
+    console.log(data);
+    setName(data.name);
     setLoading(false);
   }
 
@@ -131,9 +128,7 @@ export default function Profile() {
           throw new Error(result.message);
         }
 
-        const newAvatar = result.avatar.startsWith("/uploads/")
-          ? result.avatar
-          : `/uploads/${result.avatar}`;
+        const newAvatar = result.avatar;
 
         setAvatarUrl(newAvatar);
         setOriginalAvatarUrl(newAvatar);
