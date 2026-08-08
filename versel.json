@@ -2,15 +2,15 @@
   "version": 2,
   "rewrites": [
     {
-      "source": "/api/(.*)",
+      "source": "/api/:path*",
       "destination": "/api/server.cjs"
     },
     {
-      "source": "/uploads/(.*)",
+      "source": "/uploads/:path*",
       "destination": "/api/server.cjs"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!api|uploads|assets|vite.svg|mask-group.png).*).*",
       "destination": "/index.html"
     }
   ]
