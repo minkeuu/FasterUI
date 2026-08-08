@@ -1,5 +1,10 @@
 {
   "version": 2,
+  "functions": {
+    "api/server.cjs": {
+      "runtime": "nodejs22.x"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/:path*",
@@ -10,7 +15,7 @@
       "destination": "/api/server.cjs"
     },
     {
-      "source": "/((?!api|uploads|assets|vite.svg|mask-group.png).*).*",
+      "source": "/((?!api|uploads|assets|vite.svg|mask-group.png).*)",
       "destination": "/index.html"
     }
   ]
