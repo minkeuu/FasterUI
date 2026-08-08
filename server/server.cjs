@@ -7,7 +7,11 @@ const prisma = require("./prisma.cjs");
 const auth = require("./auth.cjs")
 const profile = require("./profile.cjs")
 // Middleware                           
-app.use(cors())                                                                                                                                                                                    
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));                                                                                                                                                                                
 app.use(express.json());                                                                                                                                                                                  
 app.use("/api/auth", auth);   
 app.use("/api/profile", profile) 
@@ -36,9 +40,8 @@ app.get('/', (req, res) => {
     }
 })();                                                                                                                                                                         
 
-if (process.env.PORT !== 'production' ) {
+if (process.env.NODE_ENV !== 'production') {
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => console.log(`Сервер запущен на порту ${PORT}`));
 }
-
 module.exports = app; 
