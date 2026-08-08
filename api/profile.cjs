@@ -4,6 +4,7 @@ const router = express.Router();
 const prisma = require("./prisma.cjs");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const multer = require("multer");
 const supabase = require("@supabase/supabase-js")
 const upload = multer({
     storage: multer.memoryStorage(),
