@@ -7,18 +7,11 @@ const prisma = require("./prisma.cjs");
 const auth = require("./auth.cjs")
 const profile = require("./profile.cjs")
 // Middleware                           
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH');
-    res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    
-    // Если браузер делает предварительный проверочный запрос OPTIONS — сразу гасим его ответом 200
-    if (req.method === 'OPTIONS') {
-        return res.status(200).end();
-    }
-    next();
-});                                                                                                                                                                               
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));                                                                                                                                                                                
 app.use(express.json());                                                                                                                                                                                  
 app.use("/api/auth", auth);   
 app.use("/api/profile", profile) 
